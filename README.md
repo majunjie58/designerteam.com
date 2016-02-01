@@ -1,2 +1,0 @@
-# designerteam.com
-designerteam
