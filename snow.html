@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>snow</title>
+</head>
+<body style="background-color:#000;overflow:hidden;">
+
+<script type="text/javascript">
+    function snow_animation(){
+        var cont = document.createElement("div");
+        cont.setAttribute("id","snow_container");
+        cont.style.position = "fixed";
+        cont.style.left=0;
+        cont.style.top=0;
+        cont.style.zIndex = 9999;
+        document.body.appendChild(cont);
+        function snow(){
+            var msX = document.body.clientWidth;
+            var msS = 2;
+            var msP = parseInt(2*Math.random())+1;
+            var msF = 16;
+            var sx = msX*Math.random(1);
+            var sy = -10;
+            var sSY = 0.5*parseInt(msS*Math.random())+0.5;
+            var sSX = 0;
+            var sP = 0;
+            var sPflag = true;
+            var sF = parseInt(msF*Math.random())+20;
+            var snow = document.createElement("span");
+            snow.innerHTML = "❄";
+            snow.style.top = sy+"px";
+            snow.style.left = sx+"px";
+            snow.style.marginLeft = sP+"px";
+            snow.style.fontSize = sF+"px";
+            snow.style.color = "#fff";
+            snow.style.position = "absolute";
+            snow.style.zIndex = 9999;
+            snow.style.opacity = 1;
+            snow.style.pointerEvents = "none";
+            snow.style.textShadow = "rgba(221,221,221,0.9) -1px 0";
+            var container = document.getElementById("snow_container");
+            container.appendChild(snow);
+            setInterval(function(){
+                if(sSY<0){sSY=-sSY}
+                sy += sSY;
+                if(sPflag){
+                    sP += msP*Math.sin(4*sSX);
+                    sSX=sSX+0.005;
+                }
+                if(document.body.clientWidth!=msX){
+                    msX = document.body.clientWidth;
+                }
+                sy += sSY;
+                sX = sx+sP;
+                snow.style.top = sy+"px";
+                snow.style.left = sX+"px";
+                if(sy>=(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)+10){sy=-10;sx = msX*Math.random(1);}
+            },20);
+        }
+
+        var a = setInterval(function(){
+            snow();
+            if(cont.childElementCount>=(document.body.clientWidth>800?10:6)){clearInterval(a)}
+        },1500);
+    }
+
+    if(document.body.clientWidth>=1025){
+        snow_animation();
+    }
+
+
+</script>
+</body>
+</html>
