@@ -32,7 +32,7 @@
         var iframe = document.getElementsByTagName("iframe");
         for(var i=0;i<a.length;i++){
             a[i].onmouseover = function(){
-            iframe[0].src = a[i].href;}
+            iframe[0].src = this.href;}
         }
         
     </script>
