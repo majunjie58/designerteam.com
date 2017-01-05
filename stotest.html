@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:100%;height:9999px;"></div>
+    <script type="text/javascript">
+        var snow_animation = function(){
+            var can = document.createElement("canvas");
+            can.setAttribute("id","canvas");
+            can.style.position = "fixed";
+            can.style.left=0;
+            can.style.top=0;
+            can.style.pointerEvents="none";
+            can.style.zIndex=9999;
+            document.body.appendChild(can);
+            can.onclick = function(){
+                this.style.display = "none";
+            }
+            var m = 0;
+            var sr = 0;
+            var o = document.body;
+            //document.body.onmousemove = function(e){
+                //e=e ? e:window.event;
+                //var x = e.pageX;
+                //var mx = document.body.clientWidth;
+                //m = 5*(x/mx-0.5);
+            //}
+
+            var canvas = document.getElementById("canvas");
+            canvas.width = document.body.clientWidth;
+            canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            var ctx = canvas.getContext('2d');
+            var snow = function(){
+                this.s = 5*Math.random()+5;
+                this.l = document.body.clientWidth * Math.random();
+                this.t = -10;
+                this.m = m;
+                this.sp = 2*Math.random()+2;
+                this.op = 1;
+            }
+
+            var draw = function(s){
+                ctx.beginPath();
+                var grd = ctx.createRadialGradient(s.l,s.t,s.s/6,s.l,s.t,s.s);
+                grd.addColorStop(0,"#fff");
+                grd.addColorStop(1,"transparent");
+                ctx.globalAlpha = s.op;
+                ctx.fillStyle=grd;
+                ctx.arc(s.l,s.t,s.s,0,Math.PI*2,false);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            var snows = new Array;
+            setInterval(function(){
+                if(snows.length<25){
+                    snows.push(new snow());
+                }
+            },500);
+
+            setInterval(function(){
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                for(var i=0;i<snows.length;i++){
+                    var s = snows[i];
+                    s.t+=s.sp+m*m/2;
+                    s.l+=Math.sin(sr);
+                    if(s.t>=(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)){
+                        s.s = 5*Math.random()+5;
+                        s.l = document.body.clientWidth * Math.random();
+                        s.t = -10;
+                        s.m = m;
+                        s.sp = 2*Math.random()+2;
+                        s.op = 1;
+                    }
+                    draw(s);
+                }
+                sr= sr +0.03;
+            },20);
+
+
+        }
+
+        setTimeout(snow_animation(),0);
+
+    </script>
+</body>
+</html>
