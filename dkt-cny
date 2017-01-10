@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    @media (max-width:520px){
+        #choujiangPC{display:none;}
+        #choujiangMB{display:block;width:100%;}
+    }
+    @media (min-width:521px) and (max-width:999px){
+        #choujiangPC{display:block;width:1920px;margin:0 auto;overflow:hidden;height:1019px;position:relative;left:50%;margin-left:-960px;
+            -webkit-transform: scale(0.6);
+            -moz-transform: scale(0.6);
+            -ms-transform: scale(0.6);
+            -o-transform: scale(0.6);
+            transform: scale(0.6);top:-204px;}
+        #choujiang{height:620px;}
+        #choujiangMB{display:none;}
+    }
+    @media (min-width:1000px){
+        #choujiangPC{display:block;width:1920px;margin:0 auto;overflow:hidden;height:1019px;position:relative;left:50%;margin-left:-960px;}
+        #choujiangMB{display:none;}
+    }
+</style>
+<div id="choujiang" style='width:100%;'>
+    <iframe id="choujiangPC" src="http://campaign.the1stmedia.com/games/reka/pc/index.html" frameborder="0"></iframe>
+    <iframe id="choujiangMB" src="http://campaign.the1stmedia.com/games/reka/mobile/index.html" frameborder="0"></iframe>
+</div>
+<script type="text/javascript">
+    $("#choujiangMB").height($("#choujiangMB").width()*1.5);
+    $(window).resize(function(){
+        $("#choujiangMB").height($("#choujiangMB").width()*1.5);
+    });
+</script>
+</body>
+</html>
