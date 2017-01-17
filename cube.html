@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        html,body{display:inline-block;position:relative;width:100%;height:100%;}
+        .con{
+            -webkit-transform: rotate3d(1,1,1,45deg);
+            -moz-transform: rotate3d(1,1,1,45deg);
+            -ms-transform: rotate3d(1,1,1,45deg);
+            -o-transform: rotate3d(1,1,1,45deg);
+            transform: rotateX(-25deg)rotateY(45deg);
+            width:300px;height:300px;left:50%;top:50%;margin-top:-240px;margin-left:-150px;position:relative;-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-ms-transform-style:preserve-3d;transform-style:preserve-3d;}
+        .con div{width:300px;height:300px;position:absolute;left:0;top:0;}
+        .con .x1{background-color:#1a78bd;opacity:1;
+            -webkit-transform: rotateX(90deg)translateZ(-150px);
+            -moz-transform: rotateX(90deg)translateZ(-150px);
+            -ms-transform: rotateX(90deg)translateZ(-150px);
+            -o-transform: rotateX(90deg)translateZ(-150px);
+            transform: rotateX(90deg)translateZ(-150px);}
+        .con .x2{background-color:transparent;opacity:1;
+            -webkit-transform: rotateX(90deg)translateZ(150px);
+            -moz-transform: rotateX(90deg)translateZ(150px);
+            -ms-transform: rotateX(90deg)translateZ(150px);
+            -o-transform: rotateX(90deg)translateZ(150px);
+            transform: rotateX(90deg)translateZ(150px);overflow:hidden;}
+        .con .y1{background-color:#439ed7;opacity:1;
+            -webkit-transform: rotateY(90deg)translateZ(150px);
+            -moz-transform: rotateY(90deg)translateZ(150px);
+            -ms-transform: rotateY(90deg)translateZ(150px);
+            -o-transform: rotateY(90deg)translateZ(150px);
+            transform: rotateY(90deg)translateZ(150px);}
+        .con .y2{background-color:transparent;opacity:1;
+            -webkit-transform: rotateY(90deg)translateZ(-150px);
+            -moz-transform: rotateY(90deg)translateZ(-150px);
+            -ms-transform: rotateY(90deg)translateZ(-150px);
+            -o-transform: rotateY(90deg)translateZ(-150px);
+            transform: rotateY(90deg)translateZ(-150px);overflow:hidden;}
+        .con .z1{background-color:transparent;opacity:1;
+            -webkit-transform: translateZ(150px);
+            -moz-transform: translateZ(150px);
+            -ms-transform: translateZ(150px);
+            -o-transform: translateZ(150px);
+            transform: translateZ(150px);overflow:hidden;}
+        .con .z1::before{content:"";width:1000px;height:1000px;position:absolute;top:0;left:0;background-color:#18648f;
+            -webkit-transform: rotate(45deg)translate(-60px);
+            -moz-transform: rotate(45deg)translate(-60px);
+            -ms-transform: rotate(45deg)translate(-60px);
+            -o-transform: rotate(45deg)translate(-60px);
+            transform: rotate(45deg)translate(-60px);}
+        .con .y2::before{content:"";width:1000px;height:1000px;position:absolute;top:0;left:0;background-color:#439ed7;
+            -webkit-transform: rotate(45deg)translate(-60px);
+            -moz-transform: rotate(45deg)translate(-60px);
+            -ms-transform: rotate(45deg)translate(-60px);
+            -o-transform: rotate(45deg)translate(-60px);
+            transform: rotate(45deg)translate(-60px);}
+        .con .x2::before{content:"";width:1000px;height:1000px;position:absolute;bottom:0;left:0;background-color:#1a78bd;
+            -webkit-transform: rotate(45deg)translate(0,60px);
+            -moz-transform: rotate(45deg)translate(0,60px);
+            -ms-transform: rotate(45deg)translate(0,60px);
+            -o-transform: rotate(45deg)translate(0,60px);
+            transform: rotate(45deg)translate(0,60px);}
+        .con .z2{background-color:#18648f;opacity:1;
+            -webkit-transform: translateZ(-150px);
+            -moz-transform: translateZ(-150px);
+            -ms-transform: translateZ(-150px);
+            -o-transform: translateZ(-150px);
+            transform: translateZ(-150px);}
+        .con .coner{opacity:1;
+            -webkit-transform: rotateX(45deg)rotateY(-35.3deg)translateZ(139.9px)translateX(52px);
+            -moz-transform: rotateX(45deg)rotateY(-35.3deg)translateZ(139.9px)translateX(52px);
+            -ms-transform: rotateX(45deg)rotateY(-35.3deg)translateZ(139.9px)translateX(52px);
+            -o-transform: rotateX(45deg)rotateY(-35.3deg)translateZ(139.9px)translateX(52px);
+            transform: rotateX(45deg)rotateY(-35.3deg)translateZ(139.9px)translateX(52px);}
+        .con .coner::before{content:"";width:0;height:0;border:149px solid transparent;border-left:256px solid #1f4666;position:absolute;top:2px;left:13px;}
+        @keyframes mymove
+        {
+            0% {opacity:1;
+                }
+            100% {opacity:1;
+                }
+        }
+
+        @-moz-keyframes mymove /* Firefox */
+        {
+            0% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,0deg);
+                -moz-transform: rotate3d(1,1,1,0deg);
+                -ms-transform: rotate3d(1,1,1,0deg);
+                -o-transform: rotate3d(1,1,1,0deg);
+                transform: rotate3d(1,1,1,0deg);}
+            100% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,360deg);
+                -moz-transform: rotate3d(1,1,1,360deg);
+                -ms-transform: rotate3d(1,1,1,360deg);
+                -o-transform: rotate3d(1,1,1,360deg);
+                transform: rotate3d(1,1,1,360deg);}
+        }
+
+        @-webkit-keyframes mymove /* Safari 和 Chrome */
+        {
+            0% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,0deg);
+                -moz-transform: rotate3d(1,1,1,0deg);
+                -ms-transform: rotate3d(1,1,1,0deg);
+                -o-transform: rotate3d(1,1,1,0deg);
+                transform: rotate3d(1,1,1,0deg);}
+            100% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,360deg);
+                -moz-transform: rotate3d(1,1,1,360deg);
+                -ms-transform: rotate3d(1,1,1,360deg);
+                -o-transform: rotate3d(1,1,1,360deg);
+                transform: rotate3d(1,1,1,360deg);}
+        }
+
+        @-o-keyframes mymove /* Opera */
+        {
+            0% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,0deg);
+                -moz-transform: rotate3d(1,1,1,0deg);
+                -ms-transform: rotate3d(1,1,1,0deg);
+                -o-transform: rotate3d(1,1,1,0deg);
+                transform: rotate3d(1,1,1,0deg);}
+            100% {opacity:1;
+                -webkit-transform: rotate3d(1,1,1,360deg);
+                -moz-transform: rotate3d(1,1,1,360deg);
+                -ms-transform: rotate3d(1,1,1,360deg);
+                -o-transform: rotate3d(1,1,1,360deg);
+                transform: rotate3d(1,1,1,360deg);}
+        }
+        .bg{width:600px;height:500px;position:absolute;left:50%;top:50%;margin-left:-300px;margin-top:-250px;background-color:#eae7e8;}
+        .bg::before{content:"";width:0;height:0;position:absolute;border:300px solid transparent;border-bottom:128px solid #eae7e8;top:-428px;left:0;}
+        .bg::after{content:"";width:0;height:0;position:absolute;border:300px solid transparent;border-top:128px solid #eae7e8;top:500px;left:0;}
+        .bg span{position:absolute;color:#254768;font-size:120px;width:100%;text-align:center;display:block;top:400px;z-index:99;font-weight:bold;font-family:"Roboto";}
+        .bg span::before{content:"3";font-family:"Roboto";font-weight:bold;font-size:80px;background-color:#eae7e8;color:#3686c7;position:absolute;left:50%;top:0;margin-left:-114px;margin-top:-14px;display:inline;height:80px;}
+    </style>
+</head>
+<body style="overflow:hidden;">
+    <div class="bg"><span>CUBE</span></div>
+    <div class="con" id="con">
+        <div class="x1"></div>
+        <div class="x2"></div>
+        <div class="y1"></div>
+        <div class="y2"></div>
+        <div class="z1"></div>
+        <div class="z2"></div>
+        <div class="coner"></div>
+    </div>
+    <script type="text/javascript">
+        var con = document.getElementById("con");
+        var deg = 0;
+        var x = -1;
+        var y = 1;
+        var z = 1;
+        setInterval(function(){
+            deg++;
+            con.style.transform = "scale(0.97)rotateX(-25deg)rotateY(45deg)rotate3d("+x+","+y+","+z+","+deg+"deg)";
+       },15);
+    </script>
+</body>
+</html>
