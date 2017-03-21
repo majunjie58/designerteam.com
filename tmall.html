@@ -37,7 +37,8 @@
             width:50%;float:left;margin-bottom:10px;
         }
 
-        #picture-container{width:1920px;left:50%;margin-left:-960px;position:relative;margin-top:20px;}
+        #picture-container{width:1920px;left:50%;margin-left:-960px;position:relative;overflow:hidden;}
+        #picture-container img{display:block;}
         #picture-container div{border:1px solid #0078b8;background-color:rgba(0, 120, 184, 0.5);position:absolute;}
 
         #getCode{
@@ -177,7 +178,7 @@
                 return false;
             }
             pic.onmouseup = function(){
-                div.style.pointerEvents = "all";
+                $("#picture-container div").css("pointer-events","all");
                 var a = div.style.width.replace(/px/,"");
                 var b = div.style.height.replace(/px/,"");
                 if(a < 10 || b<10){
