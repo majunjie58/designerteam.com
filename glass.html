@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, minimum-scale=1, maximum-scale=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="msapplication-tap-highlight" content="no">
+		<title></title>
+		<style>
+			body{top:0;right:0;bottom:0;left: 0;}
+			*{margin:0;padding:0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+			.bar1 { margin:0 2px;position: relative; width:30px;border: 1px solid #aaa; padding: 1px; }
+			.bar1 div {background:#aaa;display:block; position: relative;color: #aaa; height: 5px;line-height: 5px;}
+		</style>
+
+		<script type="text/javascript" src="https://majunjie58.github.io/designerteam.com/s3d.js"></script>
+		<script type="text/javascript">
+		  var show3d;
+		  function init1() {
+			var xn = 20;
+			var yn = 5;
+			var xr = true;
+			var yr = false;
+			var xs = 0.05;
+			var ys = 0.03;
+			var x0 = 19;
+			var y0 = 0;
+			var minz = 0.6;
+			var maxz = 1;
+			var defz = 0.9;
+			var rdp = 0.95;
+			var p1 = true;
+			var p2 = false;
+			var p3 = false;
+			var p4 = true;
+			var p5 = false; 
+			
+			var p_when = 5;
+			var px1 = 0;
+			var px2 = 0;
+			var py1 = 0;
+			var py2 = 0;
+
+			var r01= 0;
+			var r02= 0;
+			var rtop1=0;
+			var rtop2=0;
+			var qsx1 =0;
+			var qx1 = 0;
+			var qsx2 =0;
+			var qx2 = 0;
+
+			var xr1 = 0;
+			var xr2 = 0;
+			var yr1 = 0;
+			var yr2 = 0;
+
+			var psx1 = 0;
+			var cx1 = 0;
+			var cx01 = 0;
+			var psy1 = 0;
+			var cy1 = 0;
+			var cy01 = 0;
+			var psx2 = 0;
+			var cx2 = 0;
+			var cx02 = 0;
+			var psy2 = 0;
+			var cy2 = 0;
+			var cy02 = 0;
+
+			var bgc1= window.location.hash || "#fff";
+			//bgc1="url(ipic/dkn/bg.jpg) no-repeat center center";
+
+			show3d = new show3d("s3d1","https://majunjie58.github.io/designerteam.com/ipic/dkn05/img_m_out_b",500,500,bgc1,xn,yn,xr,yr,xs,ys,x0,y0,minz,maxz,rdp,p1,p2,p3,"jpg",p4,"",p5,defz,p_when,px1,py1,px2,py2,r01,r02,xr1,yr1,xr2,yr2,psx1,cx1,psy1,cy1,psx2,cx2,psy2,cy2,cx01,cy01,cx02,cy02,qsx1,qx1,qsx2,qx2,rtop1,rtop2);
+			show3d.auto_run=false;
+			//show3d.debug=1;
+		  }
+		  window.onload = init1;
+		</script>
+	</head>
+	<body>
+		<div id="s3d1"></div>
+	</body>
+</html>
+
+ 
+
+ 
