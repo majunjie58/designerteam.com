@@ -131,7 +131,7 @@
     $("#getCode").click(function(){
         $(".code").addClass("codeShow");
         var code = "";
-        code += '<div style="width:1920px;height:'+$("#picture").height()+'px;"><div class="ml464_allstore_jay abs_allstore_jay" style="left:auto;top:auto;right:auto;width:1920px;height:'+$("#picture").height()+'px;"><img src="'+$("#picture-input").val()+'" alt=""/>';
+        code += '<div class="tao-margin-bottom" style="width:1920px;height:'+$("#picture").height()+'px;"><div class="ml464_allstore_jay abs_allstore_jay" style="left:auto;top:auto;right:auto;width:1920px;height:'+$("#picture").height()+'px;"><img src="'+$("#picture-input").val()+'" alt=""/>';
         $("#picture-container div").each(function(){
             code += '<a class="abs_allstore_jay" style="top:'+$(this).css("top")+';left:'+$(this).css("left")+';width:'+$(this).width()+'px;height:'+$(this).height()+'px;" href="'+$(this).html()+'" target="_blank"></a>';
         });
