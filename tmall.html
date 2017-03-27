@@ -122,20 +122,22 @@
 <script type="text/javascript">
     var pathInput = document.getElementById("picture-input");
     var pic = document.getElementById("picture");
+    var picc = document.getElementById("picture-container");
     pathInput.onchange = function(){
         pic.src = pathInput.value;
+        $("#picture-container").width($("#picture").width()+"px");
+        $("#picture-container").css("margin-left",-$("#picture").width()/2+"px");
     }
-    var picc = document.getElementById("picture-container");
     var beginPoint = ['',''];
     var endPoint = ['',''];
     $("#getCode").click(function(){
         $(".code").addClass("codeShow");
         var code = "";
-        code += '<div class="tao-margin-bottom" style="width:1920px;height:'+$("#picture").height()+'px;"><div class="ml464_allstore_jay abs_allstore_jay" style="left:auto;top:auto;right:auto;width:1920px;height:'+$("#picture").height()+'px;"><img src="'+$("#picture-input").val()+'" alt=""/>';
+        code += '<div class="tao-margin-bottom" style="width:1920px;height:'+$("#picture").height()+'px;"><div class="ml464_allstore_jay abs_allstore_jay" style="left:auto;top:auto;right:auto;width:1920px;height:'+$("#picture").height()+'px;"><div style="width:'+$("#picture").width()+'px;margin:0 auto;"><img style="display:block;" src="'+$("#picture-input").val()+'" alt=""/>';
         $("#picture-container div").each(function(){
             code += '<a class="abs_allstore_jay" style="top:'+$(this).css("top")+';left:'+$(this).css("left")+';width:'+$(this).width()+'px;height:'+$(this).height()+'px;" href="'+$(this).html()+'" target="_blank"></a>';
         });
-        code += '</div></div>';
+        code += '</div></div></div>';
         $(".code textarea").val(code);
     });
 
