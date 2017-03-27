@@ -123,8 +123,10 @@
     var pathInput = document.getElementById("picture-input");
     var pic = document.getElementById("picture");
     var picc = document.getElementById("picture-container");
-    pathInput.onchange = function(){
+    pathInput.onkeyup = function(){
         pic.src = pathInput.value;
+    }
+    pathInput.onchange = function(){
         $("#picture-container").width($("#picture").width()+"px");
         $("#picture-container").css("margin-left",-$("#picture").width()/2+"px");
     }
