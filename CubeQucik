@@ -1,0 +1,162 @@
+<html lang="zh"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #picture-area{
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        #picture-area input{
+            width: 500px;
+            height: 40px;
+            display: block;
+            line-height: 40px;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        #picture-area .input-container{
+            width:50%;float:left;margin-bottom:10px;
+        }
+
+        #picture-container{width:1920px;left:50%;margin-left:-960px;position:relative;overflow:hidden;}
+        #picture-container img{display:block;}
+        #picture-container div{border:1px solid #0078b8;background-color:rgba(0, 120, 184, 0.5);position:absolute;}
+        #picture-container .penone{pointer-events: none;}
+
+    </style>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+</head>
+<body>
+<div id="picture-area">
+    <div class="input-container">
+        <input type="text" placeholder="Input image path" id="picture-input">
+    </div>
+    <div id="picture-container">
+        <img oncontextmenu="return false" id="picture" src="" alt="">
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pathInput = document.getElementById("picture-input");
+    var pic = document.getElementById("picture");
+    var picc = document.getElementById("picture-container");
+    var hm = 0;
+    var wm = 0;
+    pathInput.onkeyup = function(){
+        pic.src = pathInput.value;
+    }
+    pathInput.onchange = function(){
+        $("#picture-container").width($("#picture").width()+"px");
+        $("#picture-container").css("margin-left",-$("#picture").width()/2+"px");
+        hm = $("#picture").height();
+        wm = $("#picture").width();
+
+    }
+    var beginPoint = ['',''];
+    var endPoint = ['',''];
+
+    picc.onselectstart = function(){
+        return false;
+    }
+    pic.onselectstart = function(){
+        return false;
+    }
+    pic.onmousedown = function(e){
+        if(e.which == 1){
+            var x = e.offsetX;
+            var y = e.offsetY;
+            beginPoint = [x,y];
+            var div = document.createElement("div");
+            div.style.left = beginPoint[0]/wm*100+ '%';
+            div.style.top = beginPoint[1]/hm*100+ '%';
+            div.style.width = 0;
+            div.style.height = 0;
+            div.setAttribute("class","penone");
+            div.oncontextmenu = function(){return false;};
+            document.getElementById("picture-container").appendChild(div);
+            div.ondblclick = function(){
+                var link = prompt("link:","#");
+                div.innerHTML = link;
+                return false;
+            }
+            div.onmousedown = function(e){
+                if(e.which == 3){
+                    this.remove();
+                }
+                return false;
+            }
+
+            pic.onmousemove = function(e){
+                if(e.which == 1){
+                    var x1 = e.offsetX;
+                    var y1 = e.offsetY;
+                    endPoint=[x1,y1];
+                    var w = endPoint[0] - beginPoint[0];
+                    var h = endPoint[1] - beginPoint[1];
+                    if(x1 >= beginPoint[0] && y1 >= beginPoint[1]){
+                        div.style.width = w/wm*100+"%";
+                        div.style.height = h/hm*100+"%";
+                        div.style.left = beginPoint[0]/wm*100+ '%';
+                        div.style.top = beginPoint[1]/hm*100+ '%';
+                    }else{
+                        if(x1 < beginPoint[0] && y1 >= beginPoint[1]){
+                            w = -w;
+                            div.style.width = w/wm*100+"%";
+                            div.style.height = h/hm*100+"%";
+                            div.style.left = endPoint[0]/wm*100+ '%';
+                            div.style.top = beginPoint[1]/hm*100+ '%';
+                        }else if(x1 >= beginPoint[0] && y1 < beginPoint[1]){
+                            h = -h;
+                            div.style.width = w/wm*100+"%";
+                            div.style.height = h/hm*100+"%";
+                            div.style.left = beginPoint[0]/wm*100+ '%';
+                            div.style.top = endPoint[1]/hm*100+ '%';
+                        }else{
+                            w = -w;
+                            h = -h;
+                            div.style.width = w/wm*100+"%";
+                            div.style.height = h/hm*100+"%";
+                            div.style.left = endPoint[0]/wm*100+ '%';
+                            div.style.top = endPoint[1]/hm*100+ '%';
+                        }
+                    }
+                }
+                return false;
+            }
+            pic.onmouseup = function(){
+                $("#picture-container div").removeClass("penone");
+                var a = div.style.width.replace(/px/,"");
+                var b = div.style.height.replace(/px/,"");
+                if(a < 10 || b<10){
+                    div.remove();
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+</script>
+
+
+</body></html>
