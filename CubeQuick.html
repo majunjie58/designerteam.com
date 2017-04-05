@@ -111,30 +111,30 @@
                     var w = endPoint[0] - beginPoint[0];
                     var h = endPoint[1] - beginPoint[1];
                     if(x1 >= beginPoint[0] && y1 >= beginPoint[1]){
-                        div.style.width = w/wm*100+"%";
-                        div.style.height = h/hm*100+"%";
-                        div.style.left = beginPoint[0]/wm*100+ '%';
-                        div.style.top = beginPoint[1]/hm*100+ '%';
+                        div.style.width = w/wm*100.toFixed(2)+"%";
+                        div.style.height = h/hm*100.toFixed(2)+"%";
+                        div.style.left = beginPoint[0]/wm*100.toFixed(2)+ '%';
+                        div.style.top = beginPoint[1]/hm*100.toFixed(2)+ '%';
                     }else{
                         if(x1 < beginPoint[0] && y1 >= beginPoint[1]){
                             w = -w;
-                            div.style.width = w/wm*100+"%";
-                            div.style.height = h/hm*100+"%";
-                            div.style.left = endPoint[0]/wm*100+ '%';
-                            div.style.top = beginPoint[1]/hm*100+ '%';
+                            div.style.width = w/wm*100.toFixed(2)+"%";
+                            div.style.height = h/hm*100.toFixed(2)+"%";
+                            div.style.left = endPoint[0]/wm*100.toFixed(2)+ '%';
+                            div.style.top = beginPoint[1]/hm*100.toFixed(2)+ '%';
                         }else if(x1 >= beginPoint[0] && y1 < beginPoint[1]){
                             h = -h;
-                            div.style.width = w/wm*100+"%";
-                            div.style.height = h/hm*100+"%";
-                            div.style.left = beginPoint[0]/wm*100+ '%';
-                            div.style.top = endPoint[1]/hm*100+ '%';
+                            div.style.width = w/wm*100.toFixed(2)+"%";
+                            div.style.height = h/hm*100.toFixed(2)+"%";
+                            div.style.left = beginPoint[0]/wm*100.toFixed(2)+ '%';
+                            div.style.top = endPoint[1]/hm*100.toFixed(2)+ '%';
                         }else{
                             w = -w;
                             h = -h;
-                            div.style.width = w/wm*100+"%";
-                            div.style.height = h/hm*100+"%";
-                            div.style.left = endPoint[0]/wm*100+ '%';
-                            div.style.top = endPoint[1]/hm*100+ '%';
+                            div.style.width = w/wm*100.toFixed(2)+"%";
+                            div.style.height = h/hm*100.toFixed(2)+"%";
+                            div.style.left = endPoint[0]/wm*100.toFixed(2)+ '%';
+                            div.style.top = endPoint[1]/hm*100.toFixed(2)+ '%';
                         }
                     }
                 }
