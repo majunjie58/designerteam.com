@@ -14,6 +14,19 @@
 	  <script type="text/javascript">
         document.write(window.innerWidth+"x"+
 window.innerHeight);
+		  function launchFullScreen(element) {  
+  if(element.requestFullScreen) {  
+    element.requestFullScreen();  
+  } else if(element.mozRequestFullScreen) {  
+    element.mozRequestFullScreen();  
+  } else if(element.webkitRequestFullScreen) {  
+    element.webkitRequestFullScreen();  
+  }  
+}  
+  
+// 启动全屏模式  
+launchFullScreen(document.documentElement); // the whole page  
+launchFullScreen(document.getElementById("videoElement")); // any individual element 
     </script>
 </body>
 </html>
