@@ -11,6 +11,8 @@
 	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
 <body>
+	
+<div class="click_event" style="width:100px;height:100px;">点击</div>
 	  <script type="text/javascript">
         document.write(window.innerWidth+"x"+
 window.innerHeight);
@@ -23,9 +25,14 @@ window.innerHeight);
     element.webkitRequestFullScreen();  
   }  
 }  
-  
-// 启动全屏模式  
+  var a = querySelector(".click_event");
+a.on("click",function(){
 launchFullScreen(document.documentElement); // the whole page  
+});
+
+a.click();
+// 启动全屏模式  
+
     </script>
 </body>
 </html>
