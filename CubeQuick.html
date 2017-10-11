@@ -149,7 +149,9 @@
                 var b = div.style.height.replace(/px/,"");
                 if(a < 10 || b<10){
                     div.remove();
-                    document.getElementById("message-box").innerHTML+="left:"+div.style.left+";top:"+div.style.top+";width:"+div.style.width+";height:"+div.style.height+";\n";
+                    
+                }else{
+                document.getElementById("message-box").innerHTML+="left:"+div.style.left+";top:"+div.style.top+";width:"+div.style.width+";height:"+div.style.height+";\n";
                 }
             }
         }
