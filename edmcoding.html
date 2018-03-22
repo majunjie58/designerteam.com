@@ -27,18 +27,19 @@
 			margin-top: 10px;
 		}
 		.add{
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
+			display: inline-block;
+			height: 30px;
+			border-radius: 2px;
 			background-color: #0078b8;
 			text-align: center;
-			line-height: 45px;
+			line-height: 30px;
 			display: block;
 			margin: 30px auto 0 auto;
-			font-size: 30px;
+			font-size: 14px;
 			color: #fff;
 			float: left;
 			margin-right: 10px;
+			padding: 0 10px;
 		}
 
 		.code{opacity:0;visibility:hidden;position:fixed;top:50%;height:0;width:0;left:50%;background-color:#fff;
@@ -222,9 +223,11 @@
 
 	<div id="progress"></div>
 	<div id="super-container">
-		<div class="add down">+</div>
-		<div class="add right">d</div>
-		<div class="add codepop">c</div>
+		<a href="http://www.i4sp.cn/WYSIWYG/index.php" style="width:100%;display:block;">上传图片</a>
+		<div class="add down">新增一行</div>
+		<div class="add right">在本行新增</div>
+		<div class="add codepop">代码</div>
+		<div class="add del">删除</div>
 	</div>
 
 	<div class="code">
@@ -233,9 +236,11 @@
     </div>
 
 	<script type="text/javascript">
+		var line = 1;
 		$(".add.down").click(function(){
 			$("#cube-template-box").append('<tr><td><a href="" style="display: block"><img src="" alt="" style="display: block"></a></td></tr>');
-			$(".add.down").before('<div class="text"><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+			$(".add.down").before('<div class="text"><div style="width:100%">第'+line+'行</div><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+			line++;
 		});
 
 		$(".add.right").click(function(){
@@ -266,6 +271,15 @@
 
 		$(".code .close").click(function(){
 	        $(".code").removeClass("codeShow");
+	    });
+
+	    $(".add.del").click(function(){
+	    	$(".text").eq($(".text").length-1).remove();
+	    	$("#cube-template-box tr td").eq($("#cube-template-box tr td").length-1).remove();
+	    	if($("#cube-template-box tr").eq($("#cube-template-box tr").length-1).html() == ""){
+	    		$("#cube-template-box tr").eq($("#cube-template-box tr").length-1).remove();
+	    		line--;
+	    	}
 	    });
 	</script>
 
