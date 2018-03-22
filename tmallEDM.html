@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<title>EDM</title>
+	<style type="text/css">
+		#super-container{
+			position: fixed;
+			right: 0;
+			width: 400px;
+			top: 0;
+			height: 100%;
+			padding: 10px;
+		}
+
+		#super-container .url,#super-container .link{
+			width: 50%;
+			float: left;
+			font-size: 14px;
+		}
+
+		#progress{display: none;}
+		.text{
+			overflow: hidden;
+			margin-top: 10px;
+		}
+		.add{
+			display: inline-block;
+			height: 30px;
+			border-radius: 2px;
+			background-color: #0078b8;
+			text-align: center;
+			line-height: 30px;
+			display: block;
+			margin: 30px auto 0 auto;
+			font-size: 14px;
+			color: #fff;
+			float: left;
+			margin-right: 10px;
+			padding: 0 10px;
+		}
+
+		.code{opacity:0;visibility:hidden;position:fixed;top:50%;height:0;width:0;left:50%;background-color:#fff;
+            border:1px solid #1d1d1d;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            border-radius:5px;}
+        .code .close{position: absolute;cursor:pointer;
+            right: -35px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #1d1d1d;
+            border-radius: 50%;}
+        .code .close::before{content:"";position:absolute;
+            left: 14px;
+            top: 6px;
+            width: 2px;
+            height: 18px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);background-color:#1d1d1d;}
+        .code .close::after{content:"";position:absolute;
+            left: 14px;
+            top: 6px;
+            width: 2px;
+            height: 18px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);background-color:#1d1d1d;}
+        .codeShow{opacity:1;visibility:visible;width:60%;left:20%;height:60%;top:20%;padding:10px;font-size:12px;}
+
+	</style>
+</head>
+<body>
+	<div id="cube-template">
+		<center>
+		    <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0;max-width:700px;" width="700">
+		        <tbody>
+		        <tr>
+		            <td style="width: 38.72%;min-width: 170px"><img style="display: block;width: 100%;max-width: 271px;min-width: 170px" src="https://img.alicdn.com/imgextra/i4/352469034/TB2F4VDrHtlpuFjSspfXXXLUpXa_!!352469034.jpg" ></td>
+		            <td style="width: 29.41%"><img style="display: block;width: 100%;max-width: 202px;" src="https://img.alicdn.com/imgextra/i4/352469034/TB2kA4CvctnpuFjSZFvXXbcTpXa_!!352469034.jpg" ></td>
+		            <td style="width:11.43%;min-width: 52px"><a href="https://www.decathlon.com.cn/zh/store-locator" ><img style="display: block;width: 100%;max-width: 80px;min-width: 52px" src="https://img.alicdn.com/imgextra/i1/352469034/TB2ASXMvmFmpuFjSZFrXXayOXXa_!!352469034.jpg" ></a></td>
+		            <td style="width: 12.58%;min-width: 57px"><a href="https://decathlon.tmall.com/shop/view_shop.htm?spm=a230r.1.14.11.rPpMdb&user_number_id=352469034" ><img style="display: block;width: 100%;max-width: 88px;min-width: 57px" src="https://img.alicdn.com/imgextra/i2/352469034/TB2nSJMvmFmpuFjSZFrXXayOXXa_!!352469034.jpg" ></a></td>
+		            <td style="width: 7.86%;min-width: 37px"><img style="display: block;width: 100%;max-width: 55px;min-width: 37px" src="https://img.alicdn.com/imgextra/i1/352469034/TB2BDhQrHFlpuFjy0FgXXbRBVXa_!!352469034.jpg" ></td>
+		        </tr>
+		        </tbody>
+		    </table>
+		    <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0;max-width:800px;" width="100%">
+		        <tbody>
+		        <tr>
+		            <td style="width: 100%"><img style="width: 100%;display: block;" src="https://img.alicdn.com/imgextra/i3/352469034/TB2j_hGvipnpuFjSZFkXXc4ZpXa_!!352469034.jpg" ></td>
+		        </tr>
+		        </tbody>
+		    </table>
+		    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
+		        <tbody id="cube-template-box">
+		        
+		        </tbody>
+		    </table>
+		    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;">
+		        <tbody>
+		        <tr>
+		            <td height="10"></td>
+		        </tr>
+		        </tbody>
+		    </table>
+		    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 700px;background-color: #eee;">
+		        <tbody>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*为确保我们的信息不被当作垃圾邮件处理，请将<a href="mailto:marketing.tmall@decathlon.cn" style="color:#01aced; text-decoration:none;" target="_blank">marketing.tmall@decathlon.cn</a> 添加为您的联系人。</td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*我们保证向您发送关于迪卡天猫旗舰店的产品、活动及服务的电子邮件，同时会尊重并保护您的隐私。</td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*某些商品的价格或促销内容如有调整，请以迪卡侬天猫旗舰店上最终页面为准。</td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*部分商品配送区域受限，迪卡侬天猫旗舰店仅向中国大陆及港澳地区提供服务(台湾地区暂不提供配送)，请下单前认真核对。</td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*任何问题欢迎邮件联系我们：<a href="mailto:service.china@decathlon.cn" style="color:#01aced; text-decoration:none;" target="_blank">service.china@decathlon.cn</a></td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*本活动最终解释权归迪卡侬天猫旗舰店所有。</td>
+		        </tr>
+		        <tr>
+		            <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">*如果您不愿意继续接收来自迪卡侬天猫旗舰店的自动订阅类邮件，<a href="$unsubUrl$" style="font-family: '宋体'; font-size: 12px; color:#999999; text-align:left; text-decoration:underline;" target="_blank">请点击此处退订</a></td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</center>
+	</div>
+
+	<div id="progress"></div>
+	<div id="super-container">
+		<div class="add down">新增一行</div>
+		<div class="add right">在本行新增</div>
+		<div class="add codepop">代码</div>
+		<div class="add del">删除</div>
+	</div>
+
+	<div class="code">
+        <textarea style="width:100%;height:100%;border:none;outline: none"></textarea>
+        <div class="close"></div>
+    </div>
+
+	<script type="text/javascript">
+		var line = 1;
+		$(".add.down").click(function(){
+			$("#cube-template-box").append('<tr><td><a style="display: block"><img src="" alt="" style="display: block"></a></td></tr>');
+			$(".add.down").before('<div class="text"><div style="width:100%">第'+line+'行</div><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+			line++;
+		});
+
+		$(".add.right").click(function(){
+			$("#cube-template-box tr").eq($("#cube-template-box tr").length-1).append('<td><a href="" style="display: block"><img src="" alt="" style="display: block"></a></td>');
+			$(".add.down").before('<div class="text"><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+		});
+
+		$("#super-container").on("change",".text .url input",function(){
+			var index = $(".text .url input").index($(this));
+			$("#cube-template-box td").eq(index).find("img").attr("src",$(this).val());
+		});
+
+		$("#super-container").on("change",".text .link input",function(){
+			var index = $(".text .link input").index($(this));
+			if($(this).val()==""){
+				$("#cube-template-box td").eq(index).find("a").removeAttr("href");
+			}else{
+				$("#cube-template-box td").eq(index).find("a").attr("href",$(this).val());
+			}
+		});
+
+		$(".add.codepop").click(function(){
+			$(".code").addClass("codeShow");
+			var text = $("#cube-template").html();
+			$(".code textarea").html('<!doctype html><html lang=zh><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0" /></head><body>'+$("#cube-template").html()+'</body></html>');
+		})
+
+		$(".code .close").click(function(){
+	        $(".code").removeClass("codeShow");
+	    });
+
+	    $(".add.del").click(function(){
+	    	$(".text").eq($(".text").length-1).remove();
+	    	$("#cube-template-box tr td").eq($("#cube-template-box tr td").length-1).remove();
+	    	if($("#cube-template-box tr").eq($("#cube-template-box tr").length-1).html() == ""){
+	    		$("#cube-template-box tr").eq($("#cube-template-box tr").length-1).remove();
+	    		line--;
+	    	}
+	    });
+	</script>
+
+
+
+
+
+
+</body>
+</html>
