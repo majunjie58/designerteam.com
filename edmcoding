@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<title>EDM</title>
+	<style type="text/css">
+		#super-container{
+			position: fixed;
+			right: 0;
+			width: 400px;
+			top: 0;
+			height: 100%;
+			padding: 10px;
+		}
+
+		#super-container .url,#super-container .link{
+			width: 50%;
+			float: left;
+			font-size: 14px;
+		}
+
+		#progress{display: none;}
+		.text{
+			overflow: hidden;
+			margin-top: 10px;
+		}
+		.add{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: #0078b8;
+			text-align: center;
+			line-height: 45px;
+			display: block;
+			margin: 30px auto 0 auto;
+			font-size: 30px;
+			color: #fff;
+			float: left;
+			margin-right: 10px;
+		}
+
+		.code{opacity:0;visibility:hidden;position:fixed;top:50%;height:0;width:0;left:50%;background-color:#fff;
+            border:1px solid #1d1d1d;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            border-radius:5px;}
+        .code .close{position: absolute;cursor:pointer;
+            right: -35px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #1d1d1d;
+            border-radius: 50%;}
+        .code .close::before{content:"";position:absolute;
+            left: 14px;
+            top: 6px;
+            width: 2px;
+            height: 18px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);background-color:#1d1d1d;}
+        .code .close::after{content:"";position:absolute;
+            left: 14px;
+            top: 6px;
+            width: 2px;
+            height: 18px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);background-color:#1d1d1d;}
+        .codeShow{opacity:1;visibility:visible;width:60%;left:20%;height:60%;top:20%;padding:10px;font-size:12px;}
+
+	</style>
+</head>
+<body>
+	<div id="cube-template">
+		<center>
+		    <table align="center" bgcolor="#f0f0f0" border="0" cellpadding="0" cellspacing="0" id="wrapper" style="margin: 0; padding: 0;" width="750">
+		        <tbody>
+		        <tr>
+		            <td colspan="3">
+		                <img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15211864734402Email-Template的副本_01.jpg" alt="" style="display: block">
+		            </td>
+		        </tr>
+		        <tr>
+		            <td style="width: 19px"></td>
+		            <td style="width: 643px;">
+		                <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    <tr>
+		                        <td>
+		                            <table align="right" border="0" cellpadding="0" cellspacing="0" class="deviceWidth">
+		                                <tbody>
+		                                <tr>
+		                                    <td colspan="3" class="Left" style="height: 30px;line-height: 30px;font-family: '宋体',sans-serif;font-size: 12px;color: #999999;text-align: right;">如果无法查看邮件内容，<a href="$mirrorUrl$" style="font-family: 微软雅黑; font-size: 12px; color:#999999; text-align:right;text-decoration:underline;" target="_blank">请点击这里</a></td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'黑体';font-size:15px; color:#999999; line-height:18px; text-align:right;" valign="center"><a href="http://www.decathlon.com.cn/zh/decathlon/store/search" style="color:#999999;text-decoration:none;" target="_blank">全国商场查询</a></td>
+		                                    <td style="font-family:'黑体';font-size:15px; color:#999999; line-height:18px; text-align:right;">|</td>
+		                                    <td align="center"><a href="http://weibo.com/decathlonchina" target="_blank"><img border="0" src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15162477819354Bitmap.png" style="display: block;width: 18px;height: auto;line-height: 18px;"/></a></td>
+		                                </tr>
+		                                <tr>
+		                                    <td colspan="3" height="10"></td>
+		                                </tr>
+		                                </tbody>
+		                            </table>
+
+		                            <table align="left" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" height="" width="300">
+		                                <tbody>
+		                                <tr>
+		                                    <td style="height: 30px;line-height: 30px;font-family: '宋体',sans-serif;font-size: 15px;color: #999999;text-align: left;">$lastname$女士/先生，您好</td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="height: 18px;line-height: 18px;font-family: '宋体',sans-serif;font-size: 15px;color: #999999;text-align: left;">您的积分余额：$Loyaltypoint$分</td>
+		                                </tr>
+		                                <tr>
+		                                    <td height="10"></td>
+		                                </tr>
+		                                </tbody>
+		                            </table>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td colspan="2">
+		                            <img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151415710731Tablet-Portrait_03.jpg" style="display: block;width: 713px;height: auto;" alt="">
+		                        </td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		                <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    	<div id="cube-template-box">
+		                    		
+		                    	</div>
+		                    </tbody>
+		                </table>
+		                <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    <tr>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151426624920Tablet-Portrait_16.jpg" alt="" style="display: block;width: 243px;"></td>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151426624929Tablet-Portrait_17.jpg" alt="" style="display: block;width: 108px;"></td>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151426624938Tablet-Portrait_18.jpg" alt="" style="display: block;width: 86px;"></td>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151426624951Tablet-Portrait_19.jpg" alt="" style="display: block;width: 78px;"></td>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151422009540Tablet-Portrait_20.jpg" alt="" style="display: block;width: 74px;"></td>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151422009527Tablet-Portrait_21.jpg" alt="" style="display: block;width: 124px;"></td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		                <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    <tr>
+		                        <td><img src="http://www.i4sp.cn/WYSIWYG/ckeditor/uploads/15151422022119Tablet-Portrait_22.jpg" alt="" style="display: block;width: 713px;"></td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		                <table align="center" bgcolor="#f0f0f0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    <tr>
+		                        <td>
+		                            <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="680">
+		                                <tbody>
+		                                <tr>
+		                                    <td height="10"></td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">※为确保我们的信息不被当做垃圾邮件处理，请把迪卡侬 <a href="mailto:info@edm.decathlon.com.cn" style="color:#999999; text-decoration:none;" target="_blank">info@edm.decathlon.com.cn</a> 添加为您的联系人！</td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">※您之所以收到这封邮件，是因为您曾经登记注册成为迪卡侬用户，我们保证仅向您发送关于迪卡侬的产品、促销优惠以及服务的电子邮件。迪卡侬尊重并保护您的隐私。</td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">※商品价格或促销内容如有调整，请以结算时最终的展示信息或价格为准。如有问题欢迎您联系我们的客服：</td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;"><a href="mailto:service@decathlon.cn" style="color:#999999; text-decoration:none;" target="_blank">service@decathlon.cn</a></td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">※部分商品配送区域受限，迪卡侬官网仅向中国大陆地区提供服务，请下单前认真核对。</td>
+		                                </tr>
+		                                <tr>
+		                                    <td style="font-family:'宋体',sans-serif; font-size:12px; text-align:left; color:#999999; line-height:20px;">※迪卡侬版权所有©$year$. Decathlon Company. All Rights Reserved.</td>
+		                                </tr>
+		                                <tr>
+		                                    <td height="5"></td>
+		                                </tr>
+		                                </tbody>
+		                            </table>
+
+		                            <table align="center" bgcolor="#f0f0f0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="680">
+		                                <tbody>
+		                                <tr>
+		                                    <td align="left" class="Left fontColor" style="font-family:'宋体'; font-size: 12px; color:#999999; text-align:left;">※如果您不愿意继续接收来自迪卡侬的自动订阅类邮件，<a href="$unsubUrl$" style="font-family: '宋体'; font-size: 12px; color:#999999; text-align:left; text-decoration:underline;" target="_blank">请点击此处退订</a></td>
+		                                </tr>
+		                                </tbody>
+		                            </table>
+		                        </td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		                <table align="center" bgcolor="#f0f0f0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
+		                    <tbody>
+		                    <tr>
+		                        <td style="height: 15px;"></td>
+		                    </tr>
+		                    </tbody>
+		                </table>
+		            </td>
+		            <td style="width: 18px;"></td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</center>
+	</div>
+
+	<div id="progress"></div>
+	<div id="super-container">
+		<div class="add down">+</div>
+		<div class="add right">d</div>
+		<div class="add codepop">c</div>
+	</div>
+
+	<div class="code">
+        <textarea style="width:100%;height:100%;border:none;outline: none"></textarea>
+        <div class="close"></div>
+    </div>
+
+	<script type="text/javascript">
+		$(".add.down").click(function(){
+			$("#cube-template-box").append('<tr><td><a href="" style="display: block"><img src="" alt="" style="display: block"></a></td></tr>');
+			$(".add.down").before('<div class="text"><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+		});
+
+		$(".add.right").click(function(){
+			$("#cube-template-box tr").eq($("#cube-template-box tr").length-1).append('<td><a href="" style="display: block"><img src="" alt="" style="display: block"></a></td>');
+			$(".add.down").before('<div class="text"><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
+		});
+
+		$("#super-container").on("change",".text .url input",function(){
+			var index = $(".text .url input").index($(this));
+			$("#cube-template-box td").eq(index).find("img").attr("src",$(this).val());
+		});
+
+		$("#super-container").on("change",".text .link input",function(){
+			var index = $(".text .link input").index($(this));
+			$("#cube-template-box td").eq(index).find("a").attr("href",$(this).val());
+			
+		});
+
+		$(".add.codepop").click(function(){
+			$(".code").addClass("codeShow");
+			var inner = $("#cube-template-box").html();
+			var text = $("#cube-template").html();
+			$("#progress").html(text);
+			$("#progress #cube-template-box").before(inner);
+			$("#progress #cube-template-box").remove();
+			$(".code textarea").html('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><!-- CSS: START --><!-- CSS: END --></head><body>'+$("#progress").html()+'</body></html>');
+		})
+
+		$(".code .close").click(function(){
+	        $(".code").removeClass("codeShow");
+	    });
+	</script>
+
+
+
+
+
+
+</body>
+</html>
