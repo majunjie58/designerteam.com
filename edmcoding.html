@@ -137,10 +137,8 @@
 		                    </tbody>
 		                </table>
 		                <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
-		                    <tbody>
-		                    	<div id="cube-template-box">
-		                    		
-		                    	</div>
+		                    <tbody id="cube-template-box">
+		                    	
 		                    </tbody>
 		                </table>
 		                <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713">
@@ -238,7 +236,7 @@
 	<script type="text/javascript">
 		var line = 1;
 		$(".add.down").click(function(){
-			$("#cube-template-box").append('<tr><td><a href="" style="display: block"><img src="" alt="" style="display: block"></a></td></tr>');
+			$("#cube-template-box").append('<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" width="713"><tbody><tr><td><a style="display: block"><img src="" alt="" style="display: block"></a></td></tr></tbody></table>');
 			$(".add.down").before('<div class="text"><div style="width:100%">第'+line+'行</div><div class="url">url: <input type="text"></div><div class="link">link: <input type="text"></div></div>');
 			line++;
 		});
@@ -255,18 +253,17 @@
 
 		$("#super-container").on("change",".text .link input",function(){
 			var index = $(".text .link input").index($(this));
-			$("#cube-template-box td").eq(index).find("a").attr("href",$(this).val());
-			
+			if($(this).val()==""){
+				$("#cube-template-box td").eq(index).find("a").removeAttr("href");
+			}else{
+				$("#cube-template-box td").eq(index).find("a").attr("href",$(this).val());
+			}
 		});
 
 		$(".add.codepop").click(function(){
 			$(".code").addClass("codeShow");
-			var inner = $("#cube-template-box").html();
 			var text = $("#cube-template").html();
-			$("#progress").html(text);
-			$("#progress #cube-template-box").before(inner);
-			$("#progress #cube-template-box").remove();
-			$(".code textarea").html('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><!-- CSS: START --><!-- CSS: END --></head><body>'+$("#progress").html()+'</body></html>');
+			$(".code textarea").html('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><!-- CSS: START --><!-- CSS: END --></head><body>'+$("#cube-template").html()+'</body></html>');
 		})
 
 		$(".code .close").click(function(){
