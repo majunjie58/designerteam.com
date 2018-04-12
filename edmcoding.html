@@ -381,8 +381,8 @@
 
 		$(".add.codepop").click(function(){
 			$(".code").addClass("codeShow");
-			var text = $(".template-container.active .templates").html();
-			$(".code textarea").html('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><!-- CSS: START --><!-- CSS: END --></head><body>'+$("#cube-template").html()+'</body></html>');
+            var text = $(".template-container.active .templates").html();
+			$(".code textarea").html('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0;" /><!-- CSS: START --><!-- CSS: END --></head><body>'+text+'</body></html>');
 		})
 
 		$(".code .close").click(function(){
