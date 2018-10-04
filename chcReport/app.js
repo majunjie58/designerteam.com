@@ -24,6 +24,8 @@ $(".createPicture").click(function(){
     });
 });
 
+getData();
+
 function refreshData(data){
     for(var i=0;i<data.length;i++){
          $("[data-html]").eq(i).html(data[i]);
@@ -86,3 +88,20 @@ $(".button.createCode").click(function(){
 $(".code .close").click(function(){
     $(".code").removeClass("codeShow");
 });
+
+
+function saveData(){
+    var data = $("[data-save]").html();
+    localStorage.setItem("data",data);
+}
+
+function getData(){
+    var data = localStorage.getItem("data");
+    if(data!=null){
+        $("[data-save]").html(data);
+    }
+}
+
+setInterval(function(){
+    saveData();
+},5000);
