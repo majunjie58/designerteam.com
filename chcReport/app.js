@@ -1,3 +1,4 @@
+var version = "1.0";
 var canvasHeight = 0;
 $(".createPicture").click(function(){
     var node = document.querySelector(".scale-container");
@@ -23,8 +24,12 @@ $(".createPicture").click(function(){
         
     });
 });
+console.log(localStorage.getItem("version")==version);
+if(localStorage.getItem("version")==version){
+    getData();
+}
 
-getData();
+localStorage.setItem("version",version);
 
 function refreshData(data){
     for(var i=0;i<data.length;i++){
@@ -89,7 +94,6 @@ $(".code .close").click(function(){
     $(".code").removeClass("codeShow");
 });
 
-
 function saveData(){
     var data = $("[data-save]").html();
     localStorage.setItem("data",data);
@@ -105,3 +109,22 @@ function getData(){
 setInterval(function(){
     saveData();
 },5000);
+
+$(".reminding abbr").on("keyup",function(){
+    refreshReminding();
+});
+
+function refreshReminding(){
+    var container = $(".reminding");
+    var inner = $(".reminding .col-sm-6");
+    var p1 = $(".reminding .col-sm-6 p").eq(0).height();
+    var p2 = $(".reminding .col-sm-6 p").eq(1).height();
+    var p = p2 - 25>p1?p2-25:p1;
+    container.height(p/2+108);
+    inner.height(p/2 + 100);
+}
+refreshReminding();
+
+$(".storeTemplate").on("dblclick","span",function(){
+    $(this).toggleClass("small")
+});
