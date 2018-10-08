@@ -559,6 +559,11 @@ li{
     display: inline-block;
 }
 
+.storeTemplate.text-area p span.small{
+    font-size: 12px;
+    padding: 0;
+}
+
 .square.title.smallfont{
     font-size: 13px;
 }
@@ -790,7 +795,7 @@ li{
 }
 
 .doyouknow{
-    height: 305px;
+    height: auto;
     display: flex;
     vertical-align: middle;
     align-items: center;
