@@ -1,0 +1,277 @@
+@font-face {
+  font-family: Roboto-Condensed;
+  src: local("RobotoCondensed-LightItalic"),
+    local("Roboto Condensed Light Italic"),
+    url(../font/RobotoCondensed-LightItalic-webfont.woff2)
+      format("woff2"),
+    url(../font/RobotoCondensed-LightItalic-webfont.woff)
+      format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto-Condensed;
+  src: local("RobotoCondensed-Bold"), local("Roboto Condensed Bold"),
+    url(../font/RobotoCondensed-Bold-webfont.woff2)
+      format("woff2"),
+    url(../font/RobotoCondensed-Bold-webfont.woff)
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+.d-section.work-section{
+  overflow-x: hidden;
+  overflow-y: visible;
+  height: auto!important;
+}
+
+body{
+  background-color: #f3f6fb;
+  overflow-x: hidden;
+} 
+
+#main_centent{
+  width: 640px;
+  padding-bottom: 30px;
+}
+
+.content_kv{
+  width: 640px;
+  position: relative;
+  height: 648px;
+}
+
+.content_kv img{
+  width: 100%;
+  display: block;
+}
+
+.kv_slogen{
+  position: absolute;
+  width: 480px;
+  height: 228px;
+  left: 50%;
+  bottom: 90px;
+  margin-left: -240px;
+  color: #fff;
+  text-align: center;
+}
+
+.line_left{
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  position: absolute;
+  width: 12px;
+  height: 57px;
+}
+
+.line_left:before{
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 26px;
+  display: block;
+  background-color: #fff;
+  height: 1px;
+}
+
+.line_right{
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  position: absolute;
+  width: 18px;
+  height: 57px;
+  right: 0;
+}
+
+.line_right:before{
+  content:'';
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  display: block;
+  background-color: #fff;
+  height: 1px;
+  right: 0;
+}
+
+.kv_slogen h1{
+  font-size: 68px;
+  letter-spacing: 5px;
+  text-align: center;
+  line-height: 1;
+  margin-top: -33px;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px rgba(0,0,0,.2)
+}
+
+.kv_slogen span{
+  font-family: Roboto-Condensed;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0 0 20px 35px;
+  display: block;
+  text-align: left
+}
+
+.kv_slogen p{
+  font-size: 21px;
+  text-align: justify;
+  padding: 0 10px;
+  line-height: 1.4;
+}
+
+.content_floor{
+  width: 600px;
+  padding: 0 20px;
+}
+
+.content_index{
+  width: 100%;
+  margin: 40px 0 30px 0;
+  overflow: hidden;
+}
+
+.index_container{
+  width: 540px;
+  float: right;
+  border-bottom: 1px solid #444;
+}
+
+.index_num{
+  font-family: Roboto-Condensed;
+  font-size: 21px;
+  color: #444;
+  float: right;
+}
+
+.index_title{
+  font-family: Roboto-Condensed;
+  color: #444;
+  font-size: 21px;
+  float: left;
+  opacity: 0.35;
+}
+
+.content_title{
+  margin-left: 58px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.content_title h3{
+  font-size: 42px;
+  color: #444;
+  font-weight :bold;
+}
+
+.title_icon{
+  width: 60px;
+  height: 100px;
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  margin-top: -50px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 40px auto;
+}
+
+.content_detail{
+  width: 100%;
+}
+
+.content_detail p{
+  font-size: 21px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 50px;
+}
+
+.detail_picture{
+  width: 100%;
+  position: relative;
+  margin-bottom :80px;
+}
+
+.detail_picture .key_picture{
+  position: relative;
+  z-index: 3;
+  display: block;
+}
+
+.detail_picture .shadow{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  opacity: 0.14;
+  width: 620px;
+  max-width: none;
+}
+
+.content_floor.reverse .detail_picture .shadow{
+  right: 0;
+  left: initial;
+}
+
+.content_floor1 .key_picture{
+  width: 600px;
+  height: 380px;
+}
+
+
+.j_fadeIn{
+	transition: all 0.5s;
+	opacity: 0;
+}
+
+.j_fadeDown{
+	transform: translateY(100px)translateZ(0);
+}
+
+.j_fadeRight{
+	transform: translateX(100px)translateZ(0);
+}
+
+.j_fadeUp{
+	transform: translateY(-100px)translateZ(0);
+}
+
+.j_fadeLeft{
+	transform: translateX(-100px)translateZ(0);
+}
+
+.j_faded{
+	transform: translate(0,0)translateZ(0);
+	opacity: 1;
+}
+
+.content_floor1 .detail_picture{
+  height: 380px;
+}
+
+.content_floor2 .detail_picture{
+  height: 452px;
+}
+
+.content_floor3 .detail_picture{
+  height: 465px;
+}
+
+.content_floor4 .detail_picture{
+  height: 397px;
+}
+
+.content_floor5 .detail_picture{
+  height: 489px;
+}
+
+.content_floor6 .detail_picture{
+  height: 416px;
+}
