@@ -1,5 +1,5 @@
 var swiper = new Swiper('.swiper-container', {
-  autoplay:5000,
+  autoplay:5111000,
   speed: 500,
   autoplayDisableOnInteraction : false,
   loop:true,
