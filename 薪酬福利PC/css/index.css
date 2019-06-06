@@ -194,6 +194,7 @@ body{
   font-size: 20px;
   line-height: 1.5;
   width: 100%;
+  text-align: justify;
 }
 
 .detail_pictures{

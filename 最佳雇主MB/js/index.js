@@ -22,3 +22,15 @@ checkFadeIn();
 $(window).scroll(function(){
     checkFadeIn();
 });
+
+$(".swiper-slide,.awards-picture").click(function(e){
+  if($(this).hasClass('hover')){
+    console.log(1);
+    $(".swiper-slide,.awards-picture").removeClass("hover");
+  }else{
+    console.log(2);
+    $(".swiper-slide,.awards-picture").removeClass("hover");
+    $(this).addClass("hover");
+  }
+  e.stopPropagation();
+});
